@@ -1,4 +1,13 @@
 package com.ecobike.eshop.service;
 
-public class SpeedelecService implements BikeService {
+import com.ecobike.eshop.model.Speedelec;
+
+import java.util.List;
+
+public class SpeedelecService implements BikeService<Speedelec> {
+
+    @Override
+    public List<Speedelec> getAll() {
+        return null;
+    }
 }

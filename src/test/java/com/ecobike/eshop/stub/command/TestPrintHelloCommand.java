@@ -1,4 +1,4 @@
-package com.ecobike.eshop.stub;
+package com.ecobike.eshop.stub.command;
 
 import com.ecobike.eshop.command.Command;
 

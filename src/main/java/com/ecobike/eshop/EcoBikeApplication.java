@@ -1,6 +1,7 @@
 package com.ecobike.eshop;
 
 import com.ecobike.eshop.command.*;
+import com.ecobike.eshop.dao.EBikeDao;
 import com.ecobike.eshop.service.BikeService;
 import com.ecobike.eshop.service.EBikeService;
 import com.ecobike.eshop.service.FoldingBikeService;
@@ -33,7 +34,7 @@ public class EcoBikeApplication {
 
         BikeService foldingBikeService = new FoldingBikeService();
         BikeService speedelecService = new SpeedelecService();
-        BikeService eBikeService = new EBikeService();
+        BikeService eBikeService = new EBikeService(new EBikeDao());
 
         cli.setCommand(1, new ShowEntireCatalogCommand(foldingBikeService, speedelecService, eBikeService));
         cli.setCommand(2, new AddNewBikeCommand(foldingBikeService));

@@ -1,7 +1,7 @@
 package com.ecobike.eshop;
 
 import com.ecobike.eshop.command.Command;
-import com.ecobike.eshop.stub.TestPrintHelloCommand;
+import com.ecobike.eshop.stub.command.TestPrintHelloCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

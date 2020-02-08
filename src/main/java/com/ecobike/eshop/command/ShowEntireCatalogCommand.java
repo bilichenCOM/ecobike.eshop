@@ -2,13 +2,20 @@ package com.ecobike.eshop.command;
 
 import com.ecobike.eshop.service.BikeService;
 
+import java.util.Arrays;
+
 public class ShowEntireCatalogCommand implements Command {
 
-    public ShowEntireCatalogCommand(BikeService... foldingBikeService) {
+    private BikeService[] bikeServices;
+
+    public ShowEntireCatalogCommand(BikeService... bikeServices) {
+        this.bikeServices = bikeServices;
     }
 
     @Override
     public void execute() {
-        //TODO: implement command actions;
+        Arrays.stream(bikeServices)
+                .map(bs -> bs.getAll())
+                .forEach(System.out::println);
     }
 }

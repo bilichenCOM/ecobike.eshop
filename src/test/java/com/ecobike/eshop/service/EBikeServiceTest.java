@@ -1,6 +1,6 @@
 package com.ecobike.eshop.service;
 
-import com.ecobike.eshop.dao.EBikeDaoInMemory;
+import com.ecobike.eshop.dao.impl.EBikeInMemoryDao;
 import com.ecobike.eshop.model.EBike;
 import com.ecobike.eshop.stub.model.EBikeStub;
 import org.junit.jupiter.api.Assertions;
@@ -12,11 +12,11 @@ import java.util.Arrays;
 class EBikeServiceTest {
 
     private EBikeService eBikeService;
-    private EBikeDaoInMemory eBikeDao;
+    private EBikeInMemoryDao eBikeDao;
     private EBikeStub ebikeStub;
 
     public EBikeServiceTest() {
-        eBikeDao = new EBikeDaoInMemory();
+        eBikeDao = new EBikeInMemoryDao();
         eBikeService = new EBikeService(eBikeDao);
         ebikeStub = new EBikeStub();
     }

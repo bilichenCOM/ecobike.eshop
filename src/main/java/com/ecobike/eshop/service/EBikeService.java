@@ -1,6 +1,6 @@
 package com.ecobike.eshop.service;
 
-import com.ecobike.eshop.dao.EBikeDao;
+import com.ecobike.eshop.dao.impl.EBikeDao;
 import com.ecobike.eshop.model.EBike;
 
 import java.util.List;

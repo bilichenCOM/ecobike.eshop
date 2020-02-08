@@ -15,7 +15,12 @@ public class ShowEntireCatalogCommand implements Command {
     @Override
     public void execute() {
         Arrays.stream(bikeServices)
-                .map(bs -> bs.getAll())
+                .flatMap(bs -> bs.getAll().stream())
                 .forEach(System.out::println);
+    }
+
+    @Override
+    public String toString() {
+        return "Show the entire EcoBike catalog";
     }
 }

@@ -11,4 +11,9 @@ public class FindFirstItemCommand implements Command {
     public void execute() {
 
     }
+
+    @Override
+    public String toString() {
+        return "Find first item of a particular brand";
+    }
 }

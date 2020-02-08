@@ -4,11 +4,16 @@ import com.ecobike.eshop.service.BikeService;
 
 public class WriteToFileCommand implements Command {
 
-    public WriteToFileCommand(String fileName, BikeService... bikeServices) {
+    public WriteToFileCommand(BikeService... bikeServices) {
     }
 
     @Override
     public void execute() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Write to file";
     }
 }

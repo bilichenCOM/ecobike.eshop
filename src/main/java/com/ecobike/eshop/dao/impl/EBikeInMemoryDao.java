@@ -1,13 +1,11 @@
-package com.ecobike.eshop.dao;
+package com.ecobike.eshop.dao.impl;
 
+import com.ecobike.eshop.dao.BikeInMemoryDao;
 import com.ecobike.eshop.model.EBike;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class EBikeDaoInMemory extends EBikeDao {
-
-    private List<EBike> bikes = new ArrayList<>();
+public class EBikeInMemoryDao extends BikeInMemoryDao<EBike> implements EBikeDao {
 
     @Override
     public List<EBike> findAll() {

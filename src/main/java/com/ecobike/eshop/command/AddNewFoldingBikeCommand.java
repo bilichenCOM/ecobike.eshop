@@ -1,8 +1,9 @@
 package com.ecobike.eshop.command;
 
+import com.ecobike.eshop.model.FoldingBike;
 import com.ecobike.eshop.service.FoldingBikeService;
 
-public class AddNewFoldingBikeCommand implements Command {
+public class AddNewFoldingBikeCommand extends AddNewBikeCommand<FoldingBike> {
 
     private FoldingBikeService foldingBikeService;
 
@@ -12,7 +13,14 @@ public class AddNewFoldingBikeCommand implements Command {
 
     @Override
     public void execute() {
-
+        FoldingBike foldingBike = new FoldingBike();
+        initCommonFields(foldingBike);
+        foldingBike.setWheelsSize(consoleHelper.readDouble("size of wheels(in inches)"));
+        foldingBike.setGearsNumber(consoleHelper.readInt("number of gears"));
+        System.out.println("New item created!");
+        System.out.println("Saving...");
+        foldingBikeService.save(foldingBike);
+        System.out.println("Successfully saved!");
     }
 
     @Override

@@ -7,4 +7,6 @@ import java.util.List;
 public interface BikeService<T extends Bike> {
 
     List<T> getAll();
+
+    T save(T bike);
 }

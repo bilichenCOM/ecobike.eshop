@@ -1,7 +1,6 @@
 package com.ecobike.eshop;
 
 import com.ecobike.eshop.command.*;
-import com.ecobike.eshop.dao.impl.EBikeFileDao;
 import com.ecobike.eshop.service.BikeService;
 import com.ecobike.eshop.service.EBikeService;
 import com.ecobike.eshop.service.FoldingBikeService;
@@ -24,6 +23,7 @@ public class EcoBikeApplication {
                 } catch (NumberFormatException ex) {
                     System.out.println(ex.getMessage());
                 }
+                System.out.println(cli);
             }
         }
     }
@@ -33,7 +33,7 @@ public class EcoBikeApplication {
 
         BikeService foldingBikeService = new FoldingBikeService();
         BikeService speedelecService = new SpeedelecService();
-        BikeService eBikeService = new EBikeService(new EBikeFileDao());
+        BikeService eBikeService = new EBikeService();
 
         cli.setCommand(1, new ShowEntireCatalogCommand(foldingBikeService, speedelecService, eBikeService));
         cli.setCommand(2, new AddNewFoldingBikeCommand());

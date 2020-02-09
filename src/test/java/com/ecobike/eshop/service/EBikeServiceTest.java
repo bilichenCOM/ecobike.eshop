@@ -17,7 +17,7 @@ class EBikeServiceTest {
 
     public EBikeServiceTest() {
         eBikeDao = new EBikeInMemoryDao();
-        eBikeService = new EBikeService(eBikeDao);
+        eBikeService = new EBikeService();
         ebikeStub = new EBikeStub();
     }
 

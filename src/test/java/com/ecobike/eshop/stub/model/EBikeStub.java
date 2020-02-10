@@ -13,7 +13,7 @@ public class EBikeStub implements BikeStub<EBike> {
         stub.setLightsAvailable(true);
         stub.setBatteryCapacity(16000);
         stub.setColor("white");
-        stub.setPrice(142.20);
+        stub.setPrice(142);
         return stub;
     }
 }

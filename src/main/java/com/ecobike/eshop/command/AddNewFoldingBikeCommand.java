@@ -15,7 +15,7 @@ public class AddNewFoldingBikeCommand extends AddNewBikeCommand<FoldingBike> {
     public void execute() {
         FoldingBike foldingBike = new FoldingBike();
         initCommonFields(foldingBike);
-        foldingBike.setWheelsSize(consoleHelper.readDouble("size of wheels(in inches)"));
+        foldingBike.setWheelsSize(consoleHelper.readInt("size of wheels(in inches)"));
         foldingBike.setGearsNumber(consoleHelper.readInt("number of gears"));
         System.out.println("New item created!");
         System.out.println("Saving...");

@@ -7,7 +7,7 @@ public class ApplicationProperties {
     private static final String INPUT_FILE_PATH_PARAM = "--input=";
     private static final String OUTPUT_FILE_PATH_PARAM = "--output=";
 
-    public static String INPUT_FILE_PATH = "bikes.txt";
+    public static String INPUT_FILE_PATH = "ecobike.txt";
     public static String OUTPUT_FILE_PATH = "output.txt";
 
     private ApplicationProperties() {

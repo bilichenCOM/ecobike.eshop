@@ -2,14 +2,14 @@ package com.ecobike.eshop.model;
 
 public class FoldingBike extends Bike {
 
-    private Double wheelsSize;
+    private Integer wheelsSize;
     private Integer gearsNumber;
 
-    public Double getWheelsSize() {
+    public Integer getWheelsSize() {
         return wheelsSize;
     }
 
-    public void setWheelsSize(Double wheelsSize) {
+    public void setWheelsSize(Integer wheelsSize) {
         this.wheelsSize = wheelsSize;
     }
 
@@ -19,5 +19,11 @@ public class FoldingBike extends Bike {
 
     public void setGearsNumber(Integer gearsNumber) {
         this.gearsNumber = gearsNumber;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("FOLDING BIKE %s with %d gear(s) and %shead/tail light.%sPrice: %d euros.",
+                getBrand(), gearsNumber, getLightsAvailable() ? "" : "no ", System.lineSeparator(), getPrice());
     }
 }

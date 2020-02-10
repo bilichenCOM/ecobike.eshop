@@ -6,7 +6,7 @@ public abstract class Bike {
     private Integer weight;
     private Boolean lightsAvailable;
     private String color;
-    private Double price;
+    private Integer price;
 
     public String getBrand() {
         return brand;
@@ -40,11 +40,11 @@ public abstract class Bike {
         this.color = color;
     }
 
-    public Double getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 }

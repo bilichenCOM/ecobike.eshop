@@ -18,6 +18,6 @@ public abstract class AddNewBikeCommand<T extends Bike> implements Command {
         bike.setWeight(consoleHelper.readInt("weight(in grams)"));
         bike.setLightsAvailable(consoleHelper.readBoolean("front and back lights available(yes/no)"));
         bike.setColor(consoleHelper.readString("color"));
-        bike.setPrice(consoleHelper.readDouble("price"));
+        bike.setPrice(consoleHelper.readInt("price"));
     }
 }

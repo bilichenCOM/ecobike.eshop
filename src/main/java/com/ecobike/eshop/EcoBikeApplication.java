@@ -18,6 +18,7 @@ public class EcoBikeApplication {
         while (true) {
             if (scanner.hasNext()) {
                 String slot = scanner.next();
+                // TODO: remove this try-catch block;
                 try {
                     cli.actionWasTyped(slot);
                 } catch (NumberFormatException ex) {

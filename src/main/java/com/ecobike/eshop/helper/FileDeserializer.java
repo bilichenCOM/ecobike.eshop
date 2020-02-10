@@ -19,13 +19,14 @@ public class FileDeserializer {
     public <T> List<T> readList(String query, RowMapper<T> rowMapper) throws IOException {
         return Files.newBufferedReader(Paths.get(filePath)).lines()
                 .filter(l -> l.startsWith(query))
-                .map(l -> rowMapper.mapRow(l))
+                .map(r -> r.substring(query.length()).trim())
+                .map(r -> rowMapper.mapRow(r))
                 .collect(Collectors.toList());
     }
 
     public interface RowMapper<T> {
 
-        String DEFAULT_DELIMITER = ";";
+        String DEFAULT_DELIMITER = "; ";
 
         T mapRow(String row);
     }

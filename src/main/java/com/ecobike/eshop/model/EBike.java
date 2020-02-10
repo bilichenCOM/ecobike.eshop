@@ -20,4 +20,10 @@ public class EBike extends Bike {
     public Integer getMaximumSpeed() {
         return maximumSpeed;
     }
+
+    @Override
+    public String toString() {
+        return String.format("E-BIKE %s with %d mAh battery and %shead/tail light.%sPrice %d euros.",
+                getBrand(), batteryCapacity, getLightsAvailable() ? "" : "no ", System.lineSeparator(), getPrice());
+    }
 }

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-class EBikeServiceTest {
+public class EBikeServiceTest {
 
     private EBikeService eBikeService;
     private EBikeInMemoryDao eBikeDao;

@@ -24,6 +24,9 @@ public class FileDeserializer {
     }
 
     public interface RowMapper<T> {
+
+        String DEFAULT_DELIMITER = ";";
+
         T mapRow(String row);
     }
 }

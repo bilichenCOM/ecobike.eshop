@@ -3,7 +3,7 @@ package com.ecobike.eshop.dao;
 import com.ecobike.eshop.dao.impl.EBikeFileDao;
 import org.junit.jupiter.api.Test;
 
-class EBikeDaoTest {
+public class EBikeDaoTest {
 
     private EBikeFileDao eBikeDao;
 

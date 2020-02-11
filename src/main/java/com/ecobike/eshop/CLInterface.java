@@ -5,7 +5,6 @@ import com.ecobike.eshop.command.Invoker;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import static java.lang.String.join;
 import static java.lang.System.lineSeparator;
@@ -32,15 +31,12 @@ public class CLInterface implements Invoker<Integer, Command> {
         commands.get(key).execute();
     }
 
-    public void actionWasTyped(String input) {
-        if (!Pattern.matches("\\d{1,3}", input)) {
-            throw new NumberFormatException("wrong, please provide number of action");
+    public void actionWasTyped(Integer input) {
+        if (!commands.containsKey(input)) {
+            System.err.println("no such action for number " + input);
+            return;
         }
-        int slot = Integer.parseInt(input);
-        if (!commands.containsKey(slot)) {
-            throw new NumberFormatException("no such action for number " + slot);
-        }
-        invokeCommand(slot);
+        invokeCommand(input);
     }
 
     @Override

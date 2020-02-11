@@ -36,15 +36,7 @@ public class CLInterfaceTest {
 
     @Test
     void actionWasTyped() {
-        String testValidAction = "3";
-        String testNotValid = "three";
-        String testTooBig = "1234";
-
-        cli.setCommand(3, new TestPrintHelloCommand());
-
-        assertDoesNotThrow(() -> cli.actionWasTyped(testValidAction));
-        assertThrows(NumberFormatException.class, () -> cli.actionWasTyped(testNotValid));
-        assertThrows(NumberFormatException.class, () -> cli.actionWasTyped(testTooBig));
+        // TODO: implement this test case;
     }
 
     @Test
@@ -52,7 +44,6 @@ public class CLInterfaceTest {
         Integer testSlot = 1;
         TestPrintHelloCommand testCommand = new TestPrintHelloCommand();
         cli.setCommand(testSlot, testCommand);
-
         String expected = String
                 .join(System.lineSeparator(),"Please make your choice:", "1 - " + testCommand.toString());
 

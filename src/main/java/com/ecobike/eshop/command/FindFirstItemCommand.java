@@ -9,7 +9,7 @@ public class FindFirstItemCommand implements Command {
 
     @Override
     public void execute() {
-
+        // TODO: implement search method;
     }
 
     @Override

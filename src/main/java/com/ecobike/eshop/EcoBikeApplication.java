@@ -1,6 +1,7 @@
 package com.ecobike.eshop;
 
 import com.ecobike.eshop.command.*;
+import com.ecobike.eshop.helper.ConsoleReaderHelper;
 import com.ecobike.eshop.service.BikeService;
 import com.ecobike.eshop.service.EBikeService;
 import com.ecobike.eshop.service.FoldingBikeService;
@@ -13,19 +14,11 @@ public class EcoBikeApplication {
 
     private void run() {
         CLInterface cli = getCli();
-        System.out.println(cli);
-        Scanner scanner = new Scanner(System.in);
+        ConsoleReaderHelper consoleReaderHelper = new ConsoleReaderHelper();
         while (true) {
-            if (scanner.hasNext()) {
-                String slot = scanner.next();
-                // TODO: remove this try-catch block;
-                try {
-                    cli.actionWasTyped(slot);
-                } catch (NumberFormatException ex) {
-                    System.out.println(ex.getMessage());
-                }
-                System.out.println(cli);
-            }
+            System.out.println(cli);
+            Integer slot = consoleReaderHelper.readInt();
+            cli.actionWasTyped(slot);
         }
     }
 

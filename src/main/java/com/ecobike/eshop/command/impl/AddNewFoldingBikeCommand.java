@@ -1,7 +1,7 @@
-package com.ecobike.eshop.command;
+package com.ecobike.eshop.command.impl;
 
 import com.ecobike.eshop.model.FoldingBike;
-import com.ecobike.eshop.service.FoldingBikeService;
+import com.ecobike.eshop.service.impl.FoldingBikeService;
 
 public class AddNewFoldingBikeCommand extends AddNewBikeCommand<FoldingBike> {
 
@@ -19,7 +19,7 @@ public class AddNewFoldingBikeCommand extends AddNewBikeCommand<FoldingBike> {
         foldingBike.setGearsNumber(consoleHelper.readInt("number of gears"));
         System.out.println("New item created!");
         System.out.println("Saving...");
-        foldingBikeService.save(foldingBike);
+        foldingBikeService.saveInMemory(foldingBike);
         System.out.println("Successfully saved!");
     }
 

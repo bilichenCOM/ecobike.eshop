@@ -1,10 +1,11 @@
-package com.ecobike.eshop.command;
+package com.ecobike.eshop.command.impl;
 
+import com.ecobike.eshop.command.ConsoleCommand;
 import com.ecobike.eshop.service.BikeService;
 
 import java.util.Arrays;
 
-public class ShowEntireCatalogCommand implements Command {
+public class ShowEntireCatalogCommand extends ConsoleCommand {
 
     private BikeService[] bikeServices;
 

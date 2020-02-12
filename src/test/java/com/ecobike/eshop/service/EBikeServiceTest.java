@@ -2,6 +2,7 @@ package com.ecobike.eshop.service;
 
 import com.ecobike.eshop.dao.impl.EBikeInMemoryDao;
 import com.ecobike.eshop.model.EBike;
+import com.ecobike.eshop.service.impl.EBikeService;
 import com.ecobike.eshop.stub.model.EBikeStub;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,7 +1,7 @@
-package com.ecobike.eshop.command;
+package com.ecobike.eshop.command.impl;
 
 import com.ecobike.eshop.model.Speedelec;
-import com.ecobike.eshop.service.SpeedelecService;
+import com.ecobike.eshop.service.impl.SpeedelecService;
 
 public class AddNewSpeedelecBikeCommand extends AddNewBikeCommand<Speedelec> {
 
@@ -19,7 +19,7 @@ public class AddNewSpeedelecBikeCommand extends AddNewBikeCommand<Speedelec> {
         speedelec.setMaximumSpeed(consoleHelper.readInt("maximum speed"));
         System.out.println("New item created");
         System.out.println("Saving...");
-        speedelecService.save(speedelec);
+        speedelecService.saveInMemory(speedelec);
         System.out.println("Successfully saved!");
     }
 

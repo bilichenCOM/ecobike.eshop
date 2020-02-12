@@ -2,11 +2,13 @@ package com.ecobike.eshop.dao.impl;
 
 import com.ecobike.eshop.dao.BikeFileDao;
 import com.ecobike.eshop.helper.FileDeserializer;
+import com.ecobike.eshop.helper.FileSerializer;
 import com.ecobike.eshop.model.Speedelec;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class SpeedelecFileDao extends BikeFileDao<Speedelec> implements SpeedelecDao {
 
@@ -21,13 +23,17 @@ public class SpeedelecFileDao extends BikeFileDao<Speedelec> implements Speedele
     }
 
     @Override
-    public Speedelec save(Speedelec bike) {
-        // TODO: implement this method;
-        return null;
+    public Optional<Speedelec> findByBrand(String brand) {
+        return Optional.empty();
+    }
+
+    @Override
+    public void saveAll(List<Speedelec> bikes) {
+        fileSerializer.writeLines(bikes, new SpeedelecSerializer());
+
     }
 
     public static class SpeedelecRowMapper implements FileDeserializer.RowMapper<Speedelec> {
-
         @Override
         public Speedelec mapRow(String row) {
             String[] properties = row.split(DEFAULT_DELIMITER);
@@ -40,6 +46,16 @@ public class SpeedelecFileDao extends BikeFileDao<Speedelec> implements Speedele
             speedelec.setColor(properties[5]);
             speedelec.setPrice(Integer.parseInt(properties[6]));
             return speedelec;
+        }
+    }
+
+    private static class SpeedelecSerializer implements FileSerializer.Serializer<Speedelec> {
+        @Override
+        public String serializeToString(Speedelec speedelec) {
+            return String.join(DEFAULT_DELIMITER, speedelec.getBrand(), speedelec.getMaximumSpeed().toString(),
+                    speedelec.getWeight().toString(), speedelec.getLightsAvailable().toString(),
+                    speedelec.getBatteryCapacity().toString(), speedelec.getColor(),
+                    speedelec.getPrice().toString());
         }
     }
 }

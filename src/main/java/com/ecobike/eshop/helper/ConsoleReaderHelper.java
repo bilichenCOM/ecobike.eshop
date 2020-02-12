@@ -11,11 +11,7 @@ public class ConsoleReaderHelper {
     }
 
     public String readString(String name) {
-        System.out.print(name + ": ");
-        return readString();
-    }
-
-    private String readString() {
+        System.out.print(name);
         return scanner.next();
     }
 
@@ -37,15 +33,6 @@ public class ConsoleReaderHelper {
         } else {
             System.err.println("please type 'yes' or 'no'");
             return readBoolean(name);
-        }
-    }
-
-    public Integer readInt() {
-        try {
-            return Integer.parseInt(readString());
-        } catch (NumberFormatException ex) {
-            System.err.println("please give the correct number");
-            return readInt();
         }
     }
 }

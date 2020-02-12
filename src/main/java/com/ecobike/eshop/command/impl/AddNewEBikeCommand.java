@@ -1,7 +1,7 @@
-package com.ecobike.eshop.command;
+package com.ecobike.eshop.command.impl;
 
 import com.ecobike.eshop.model.EBike;
-import com.ecobike.eshop.service.EBikeService;
+import com.ecobike.eshop.service.impl.EBikeService;
 
 public class AddNewEBikeCommand extends AddNewBikeCommand<EBike> {
 
@@ -19,7 +19,7 @@ public class AddNewEBikeCommand extends AddNewBikeCommand<EBike> {
         eBike.setBatteryCapacity(consoleHelper.readInt("battery capacity(in mAh)"));
         System.out.println("New item was created");
         System.out.println("Saving...");
-        eBikeService.save(eBike);
+        eBikeService.saveInMemory(eBike);
         System.out.println("Successfully saved!");
     }
 

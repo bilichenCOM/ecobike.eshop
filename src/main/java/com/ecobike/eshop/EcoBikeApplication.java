@@ -1,14 +1,13 @@
 package com.ecobike.eshop;
 
-import com.ecobike.eshop.command.*;
+import com.ecobike.eshop.command.impl.*;
 import com.ecobike.eshop.helper.ConsoleReaderHelper;
 import com.ecobike.eshop.service.BikeService;
-import com.ecobike.eshop.service.EBikeService;
-import com.ecobike.eshop.service.FoldingBikeService;
-import com.ecobike.eshop.service.SpeedelecService;
+import com.ecobike.eshop.service.impl.EBikeService;
+import com.ecobike.eshop.service.impl.FoldingBikeService;
+import com.ecobike.eshop.service.impl.SpeedelecService;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class EcoBikeApplication {
 
@@ -17,7 +16,7 @@ public class EcoBikeApplication {
         ConsoleReaderHelper consoleReaderHelper = new ConsoleReaderHelper();
         while (true) {
             System.out.println(cli);
-            Integer slot = consoleReaderHelper.readInt();
+            Integer slot = consoleReaderHelper.readInt("");
             cli.actionWasTyped(slot);
         }
     }

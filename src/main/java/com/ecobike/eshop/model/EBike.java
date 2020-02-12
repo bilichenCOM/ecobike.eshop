@@ -9,7 +9,7 @@ public class EBike extends Bike {
         this.batteryCapacity = batteryCapacity;
     }
 
-    public int getBatteryCapacity() {
+    public Integer getBatteryCapacity() {
         return batteryCapacity;
     }
 

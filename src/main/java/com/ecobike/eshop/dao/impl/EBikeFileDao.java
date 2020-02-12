@@ -2,16 +2,19 @@ package com.ecobike.eshop.dao.impl;
 
 import com.ecobike.eshop.dao.BikeFileDao;
 import com.ecobike.eshop.helper.FileDeserializer;
+import com.ecobike.eshop.helper.FileSerializer;
 import com.ecobike.eshop.model.EBike;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class EBikeFileDao extends BikeFileDao<EBike> implements EBikeDao {
+public class EBikeFileDao extends BikeFileDao<EBike> implements EBikeDao{
 
     @Override
     public List<EBike> findAll() {
+        // TODO: remove this try-catch block;
         try {
             return fileDeserializer.readList("E-BIKE", new EBikeRowMapper());
         } catch (IOException e) {
@@ -21,12 +24,16 @@ public class EBikeFileDao extends BikeFileDao<EBike> implements EBikeDao {
     }
 
     @Override
-    public EBike save(EBike bike) {
-        return null;
+    public Optional<EBike> findByBrand(String brand) {
+        return Optional.empty();
+    }
+
+    @Override
+    public void saveAll(List<EBike> bikes) {
+        fileSerializer.writeLines(bikes, new EBikeSerializer());
     }
 
     public static class EBikeRowMapper implements FileDeserializer.RowMapper<EBike> {
-
         @Override
         public EBike mapRow(String row) {
             String[] properties = row.split(DEFAULT_DELIMITER);
@@ -39,6 +46,16 @@ public class EBikeFileDao extends BikeFileDao<EBike> implements EBikeDao {
             eBike.setColor(properties[5]);
             eBike.setPrice(Integer.parseInt(properties[6]));
             return eBike;
+        }
+    }
+
+    private static class EBikeSerializer implements FileSerializer.Serializer<EBike> {
+        @Override
+        public String serializeToString(EBike eBike) {
+            return String.join(DEFAULT_DELIMITER, "E-BIKE",
+                    eBike.getBrand(), eBike.getMaximumSpeed().toString(), eBike.getWeight().toString(),
+                    eBike.getLightsAvailable().toString(), eBike.getBatteryCapacity().toString(),
+                    eBike.getColor(), eBike.getPrice().toString());
         }
     }
 }

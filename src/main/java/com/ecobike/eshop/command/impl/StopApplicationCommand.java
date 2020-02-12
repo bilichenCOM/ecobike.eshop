@@ -1,4 +1,6 @@
-package com.ecobike.eshop.command;
+package com.ecobike.eshop.command.impl;
+
+import com.ecobike.eshop.command.Command;
 
 public class StopApplicationCommand implements Command {
     @Override

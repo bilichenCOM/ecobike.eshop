@@ -16,6 +16,7 @@ public abstract class BikeInMemoryDao<T extends Bike> implements BikeDao<T> {
     }
 
     public T save(T bike) {
+        bikes.add(bike);
         return bike;
     }
 
@@ -27,5 +28,9 @@ public abstract class BikeInMemoryDao<T extends Bike> implements BikeDao<T> {
     @Override
     public void saveAll(List<T> bikes) {
         this.bikes.addAll(bikes);
+    }
+
+    public void deleteAll() {
+        bikes.clear();
     }
 }

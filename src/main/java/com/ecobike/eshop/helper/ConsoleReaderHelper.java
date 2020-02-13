@@ -12,7 +12,7 @@ public class ConsoleReaderHelper {
 
     public String readString(String name) {
         System.out.print(name);
-        return scanner.next();
+        return scanner.nextLine();
     }
 
     public int readInt(String name) {

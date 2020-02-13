@@ -2,7 +2,6 @@ package com.ecobike.eshop;
 
 import com.ecobike.eshop.command.impl.*;
 import com.ecobike.eshop.helper.ConsoleReaderHelper;
-import com.ecobike.eshop.service.BikeService;
 import com.ecobike.eshop.service.impl.EBikeService;
 import com.ecobike.eshop.service.impl.FoldingBikeService;
 import com.ecobike.eshop.service.impl.SpeedelecService;
@@ -24,14 +23,14 @@ public class EcoBikeApplication {
     private CLInterface getCli() {
         CLInterface cli = new CLInterface();
 
-        BikeService foldingBikeService = new FoldingBikeService();
-        BikeService speedelecService = new SpeedelecService();
-        BikeService eBikeService = new EBikeService();
+        FoldingBikeService foldingBikeService = new FoldingBikeService();
+        SpeedelecService speedelecService = new SpeedelecService();
+        EBikeService eBikeService = new EBikeService();
 
         cli.setCommand(1, new ShowEntireCatalogCommand(foldingBikeService, speedelecService, eBikeService));
-        cli.setCommand(2, new AddNewFoldingBikeCommand());
-        cli.setCommand(3, new AddNewSpeedelecBikeCommand());
-        cli.setCommand(4, new AddNewEBikeCommand());
+        cli.setCommand(2, new AddNewFoldingBikeCommand(foldingBikeService));
+        cli.setCommand(3, new AddNewSpeedelecBikeCommand(speedelecService));
+        cli.setCommand(4, new AddNewEBikeCommand(eBikeService));
         cli.setCommand(5, new FindFirstItemCommand(foldingBikeService, speedelecService, eBikeService));
         cli.setCommand(6, new WriteToFileCommand(foldingBikeService, speedelecService, eBikeService));
         cli.setCommand(7, new StopApplicationCommand());

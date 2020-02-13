@@ -5,22 +5,18 @@ import com.ecobike.eshop.service.impl.SpeedelecService;
 
 public class AddNewSpeedelecBikeCommand extends AddNewBikeCommand<Speedelec> {
 
-    private SpeedelecService speedelecService;
-
-    public AddNewSpeedelecBikeCommand() {
-        speedelecService = new SpeedelecService();
+    public AddNewSpeedelecBikeCommand(SpeedelecService speedelecService) {
+        super(speedelecService);
     }
 
     @Override
     public void execute() {
         Speedelec speedelec = new Speedelec();
         initCommonFields(speedelec);
-        speedelec.setBatteryCapacity(consoleHelper.readInt("battery capacity"));
-        speedelec.setMaximumSpeed(consoleHelper.readInt("maximum speed"));
-        System.out.println("New item created");
-        System.out.println("Saving...");
-        speedelecService.saveInMemory(speedelec);
-        System.out.println("Successfully saved!");
+        speedelec.setBatteryCapacity(consoleHelper.readInt("battery capacity: "));
+        speedelec.setMaximumSpeed(consoleHelper.readInt("maximum speed: "));
+        saveInMemory(speedelec);
+        printInfo();
     }
 
     @Override

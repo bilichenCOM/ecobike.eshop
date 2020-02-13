@@ -5,22 +5,18 @@ import com.ecobike.eshop.service.impl.FoldingBikeService;
 
 public class AddNewFoldingBikeCommand extends AddNewBikeCommand<FoldingBike> {
 
-    private FoldingBikeService foldingBikeService;
-
-    public AddNewFoldingBikeCommand() {
-        foldingBikeService = new FoldingBikeService();
+    public AddNewFoldingBikeCommand(FoldingBikeService foldingBikeService) {
+        super(foldingBikeService);
     }
 
     @Override
     public void execute() {
         FoldingBike foldingBike = new FoldingBike();
         initCommonFields(foldingBike);
-        foldingBike.setWheelsSize(consoleHelper.readInt("size of wheels(in inches)"));
-        foldingBike.setGearsNumber(consoleHelper.readInt("number of gears"));
-        System.out.println("New item created!");
-        System.out.println("Saving...");
-        foldingBikeService.saveInMemory(foldingBike);
-        System.out.println("Successfully saved!");
+        foldingBike.setWheelsSize(consoleHelper.readInt("size of wheels(in inches): "));
+        foldingBike.setGearsNumber(consoleHelper.readInt("number of gears: "));
+        saveInMemory(foldingBike);
+        printInfo();
     }
 
     @Override

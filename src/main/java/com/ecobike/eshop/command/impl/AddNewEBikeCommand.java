@@ -5,22 +5,18 @@ import com.ecobike.eshop.service.impl.EBikeService;
 
 public class AddNewEBikeCommand extends AddNewBikeCommand<EBike> {
 
-    private EBikeService eBikeService;
-
-    public AddNewEBikeCommand() {
-        eBikeService = new EBikeService();
+    public AddNewEBikeCommand(EBikeService eBikeService) {
+        super(eBikeService);
     }
 
     @Override
     public void execute() {
         EBike eBike = new EBike();
         initCommonFields(eBike);
-        eBike.setMaximumSpeed(consoleHelper.readInt("maximum speed"));
-        eBike.setBatteryCapacity(consoleHelper.readInt("battery capacity(in mAh)"));
-        System.out.println("New item was created");
-        System.out.println("Saving...");
-        eBikeService.saveInMemory(eBike);
-        System.out.println("Successfully saved!");
+        eBike.setMaximumSpeed(consoleHelper.readInt("maximum speed: "));
+        eBike.setBatteryCapacity(consoleHelper.readInt("battery capacity(in mAh): "));
+        saveInMemory(eBike);
+        printInfo();
     }
 
     @Override

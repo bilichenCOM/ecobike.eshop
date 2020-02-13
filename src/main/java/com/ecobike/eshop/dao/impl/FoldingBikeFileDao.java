@@ -5,8 +5,6 @@ import com.ecobike.eshop.helper.FileDeserializer;
 import com.ecobike.eshop.helper.FileSerializer;
 import com.ecobike.eshop.model.FoldingBike;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,17 +12,12 @@ public class FoldingBikeFileDao extends BikeFileDao<FoldingBike> implements Fold
 
     @Override
     public List<FoldingBike> findAll() {
-        try {
-            return fileDeserializer.readList("FOLDING BIKE", new FoldingBikeRowMapper());
-        } catch (IOException e) {
-            System.err.println("some problems by reading file...");
-        }
-        return new ArrayList<>();
+        return fileDeserializer.readList("FOLDING BIKE", new FoldingBikeRowMapper());
     }
 
     @Override
     public Optional<FoldingBike> findByBrand(String brand) {
-        return Optional.empty();
+        return fileDeserializer.readObject("FOLDING BIKE", brand, new FoldingBikeRowMapper());
     }
 
     @Override
@@ -52,7 +45,8 @@ public class FoldingBikeFileDao extends BikeFileDao<FoldingBike> implements Fold
     public static class FoldingBikeSerializer implements FileSerializer.Serializer<FoldingBike> {
         @Override
         public String serializeToString(FoldingBike foldingBike) {
-            return String.join(DEFAULT_DELIMITER, foldingBike.getBrand(), foldingBike.getWheelsSize().toString(),
+            return "FOLDING BIKE " + String.join(DEFAULT_DELIMITER, foldingBike.getBrand(),
+                    foldingBike.getWheelsSize().toString(),
                     foldingBike.getGearsNumber().toString(), foldingBike.getWeight().toString(),
                     foldingBike.getLightsAvailable().toString(), foldingBike.getColor(),
                     foldingBike.getPrice().toString());

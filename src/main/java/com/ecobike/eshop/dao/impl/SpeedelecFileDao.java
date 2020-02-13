@@ -5,8 +5,6 @@ import com.ecobike.eshop.helper.FileDeserializer;
 import com.ecobike.eshop.helper.FileSerializer;
 import com.ecobike.eshop.model.Speedelec;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,17 +12,12 @@ public class SpeedelecFileDao extends BikeFileDao<Speedelec> implements Speedele
 
     @Override
     public List<Speedelec> findAll() {
-        try {
-            return fileDeserializer.readList("SPEEDELEC", new SpeedelecRowMapper());
-        } catch (IOException e) {
-            System.err.println("something went wrong by reading file..");
-        }
-        return new ArrayList<>();
+        return fileDeserializer.readList("SPEEDELEC", new SpeedelecRowMapper());
     }
 
     @Override
     public Optional<Speedelec> findByBrand(String brand) {
-        return Optional.empty();
+        return fileDeserializer.readObject("SPEEDELEC", brand, new SpeedelecRowMapper());
     }
 
     @Override
@@ -52,7 +45,8 @@ public class SpeedelecFileDao extends BikeFileDao<Speedelec> implements Speedele
     private static class SpeedelecSerializer implements FileSerializer.Serializer<Speedelec> {
         @Override
         public String serializeToString(Speedelec speedelec) {
-            return String.join(DEFAULT_DELIMITER, speedelec.getBrand(), speedelec.getMaximumSpeed().toString(),
+            return "SPEEDELEC " + String.join(DEFAULT_DELIMITER, speedelec.getBrand(),
+                    speedelec.getMaximumSpeed().toString(),
                     speedelec.getWeight().toString(), speedelec.getLightsAvailable().toString(),
                     speedelec.getBatteryCapacity().toString(), speedelec.getColor(),
                     speedelec.getPrice().toString());

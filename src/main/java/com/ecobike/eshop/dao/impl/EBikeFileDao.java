@@ -5,27 +5,19 @@ import com.ecobike.eshop.helper.FileDeserializer;
 import com.ecobike.eshop.helper.FileSerializer;
 import com.ecobike.eshop.model.EBike;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class EBikeFileDao extends BikeFileDao<EBike> implements EBikeDao{
+public class EBikeFileDao extends BikeFileDao<EBike> implements EBikeDao {
 
     @Override
     public List<EBike> findAll() {
-        // TODO: remove this try-catch block;
-        try {
-            return fileDeserializer.readList("E-BIKE", new EBikeRowMapper());
-        } catch (IOException e) {
-            System.err.println("sorry, some problems reading file with data " + e.getMessage());
-        }
-        return new ArrayList<>();
+        return fileDeserializer.readList("E-BIKE", new EBikeRowMapper());
     }
 
     @Override
     public Optional<EBike> findByBrand(String brand) {
-        return Optional.empty();
+        return fileDeserializer.readObject("E-BIKE", brand, new EBikeRowMapper());
     }
 
     @Override
@@ -52,8 +44,8 @@ public class EBikeFileDao extends BikeFileDao<EBike> implements EBikeDao{
     private static class EBikeSerializer implements FileSerializer.Serializer<EBike> {
         @Override
         public String serializeToString(EBike eBike) {
-            return String.join(DEFAULT_DELIMITER, "E-BIKE",
-                    eBike.getBrand(), eBike.getMaximumSpeed().toString(), eBike.getWeight().toString(),
+            return "E-BIKE " + String.join(DEFAULT_DELIMITER, eBike.getBrand(),
+                    eBike.getMaximumSpeed().toString(), eBike.getWeight().toString(),
                     eBike.getLightsAvailable().toString(), eBike.getBatteryCapacity().toString(),
                     eBike.getColor(), eBike.getPrice().toString());
         }

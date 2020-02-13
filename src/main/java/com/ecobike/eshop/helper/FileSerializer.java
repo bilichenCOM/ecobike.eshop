@@ -23,7 +23,7 @@ public class FileSerializer {
                 .map(serializer::serializeToString)
                 .collect(Collectors.toList());
         try {
-            Files.write(Paths.get(filePath), lines, CREATE, WRITE, APPEND);
+            Files.write(Paths.get(filePath), lines, WRITE, APPEND, CREATE);
         } catch (IOException e) {
             System.err.println("FileSerializer: cannot save data to file");
         }

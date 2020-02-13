@@ -12,6 +12,11 @@ public abstract class BikeService<T extends Bike> {
     protected BikeDao<T> bikeDao;
     protected BikeInMemoryDao<T> bikeInMemoryDao;
 
+    protected BikeService(BikeDao<T> bikeDao, BikeInMemoryDao<T> bikeInMemoryDao) {
+        this.bikeDao = bikeDao;
+        this.bikeInMemoryDao = bikeInMemoryDao;
+    }
+
     public List<T> getAll() {
         return bikeDao.findAll();
     };
@@ -27,5 +32,6 @@ public abstract class BikeService<T extends Bike> {
     public void saveAllFromMemory() {
         List<T> inMemory = bikeInMemoryDao.findAll();
         bikeDao.saveAll(inMemory);
+        bikeInMemoryDao.deleteAll();
     }
 }

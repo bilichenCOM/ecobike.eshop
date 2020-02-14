@@ -1,5 +1,5 @@
-#*EcoBike e-shop*
-##command line prototype
+# *EcoBike e-shop*
+## command line prototype
 <p>This is implementation of a prototype for e-shop of EcoBike company.</p>
 <p>It is completely command line application, that supports now seven operations:</p>
 <ul>
@@ -31,14 +31,14 @@ the program. To save items for durable period of time use 'Write to file' comman
 it will write all new items using special format to external plain-text file, that<br/>
 can be used as input later.
 
-##start application
+## start application
 To start application you should download this source code and using maven<br/>
 you can compile and package this project into single executable jar-file.<br/>
 Just invoke ```mvn clean package``` in project root.<br/>
 After compiling and assembling process is done. You can run it using your console<br/>
 ```java -jar target/ecobike-eshop-prototype-jar-with-dependencies.jar```<br/>
 (jre version 1.8 and higher is required)<br/>
-##input params
+## input params
 This application works with data provided in plain-text files.<br/>
 Paths to these files can be specified on startup through command line parameters.<br/>
 Example:<br/>

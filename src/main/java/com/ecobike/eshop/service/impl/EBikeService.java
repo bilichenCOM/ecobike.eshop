@@ -7,7 +7,7 @@ import com.ecobike.eshop.service.BikeService;
 
 public class EBikeService extends BikeService<EBike> {
 
-    public EBikeService() {
-        super(new EBikeFileDao(), new EBikeInMemoryDao());
+    public EBikeService(EBikeFileDao eBikeFileDao, EBikeInMemoryDao eBikeInMemoryDao) {
+        super(eBikeFileDao, eBikeInMemoryDao);
     }
 }

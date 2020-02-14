@@ -6,6 +6,14 @@ import com.ecobike.eshop.model.Bike;
 
 public abstract class BikeFileDao<T extends Bike> implements BikeDao<T> {
 
-    protected static final FileDeserializer fileDeserializer = new FileDeserializer();
-    protected static final FileSerializer fileSerializer = new FileSerializer();
+    protected static FileDeserializer fileDeserializer = new FileDeserializer();
+    protected static FileSerializer fileSerializer = new FileSerializer();
+
+    public void setFileDeserializer(FileDeserializer fileDeserializer) {
+        BikeFileDao.fileDeserializer = fileDeserializer;
+    }
+
+    public void setFileSerializer(FileSerializer fileSerializer) {
+        BikeFileDao.fileSerializer = fileSerializer;
+    }
 }

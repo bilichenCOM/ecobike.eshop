@@ -1,12 +1,12 @@
 package com.ecobike.eshop.stub.model;
 
-import com.ecobike.eshop.model.EBike;
+import com.ecobike.eshop.model.Speedelec;
 
-public class EBikeStub implements BikeStub<EBike> {
+public class SpeedelecStub implements BikeStub<Speedelec> {
 
     @Override
-    public EBike stub(String brand) {
-        EBike stub = new EBike();
+    public Speedelec stub(String brand) {
+        Speedelec stub = new Speedelec();
         stub.setBrand(brand);
         stub.setMaximumSpeed(40);
         stub.setWeight(15000);

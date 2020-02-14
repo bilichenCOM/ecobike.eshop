@@ -1,6 +1,6 @@
 package com.ecobike.eshop;
 
-import com.ecobike.eshop.command.Command;
+import com.ecobike.eshop.command.ConsoleCommand;
 import com.ecobike.eshop.command.Invoker;
 
 import java.util.HashMap;
@@ -9,20 +9,20 @@ import java.util.Map;
 import static java.lang.String.join;
 import static java.lang.System.lineSeparator;
 
-public class CLInterface implements Invoker<Integer, Command> {
+public class CLInterface implements Invoker<Integer, ConsoleCommand> {
 
-    private Map<Integer, Command> commands;
+    private Map<Integer, ConsoleCommand> commands;
 
     public CLInterface() {
         commands = new HashMap<>();
     }
 
-    public Map<Integer, Command> getCommands() {
+    public Map<Integer, ConsoleCommand> getCommands() {
         return commands;
     }
 
     @Override
-    public void setCommand(Integer slot, Command command) {
+    public void setCommand(Integer slot, ConsoleCommand command) {
         commands.put(slot, command);
     }
 

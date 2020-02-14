@@ -41,7 +41,7 @@ public class EBikeFileDao extends BikeFileDao<EBike> implements EBikeDao {
         }
     }
 
-    private static class EBikeSerializer implements FileSerializer.Serializer<EBike> {
+    public static class EBikeSerializer implements FileSerializer.Serializer<EBike> {
         @Override
         public String serializeToString(EBike eBike) {
             return "E-BIKE " + String.join(DEFAULT_DELIMITER, eBike.getBrand(),

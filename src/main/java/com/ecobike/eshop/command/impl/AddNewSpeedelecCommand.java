@@ -3,9 +3,9 @@ package com.ecobike.eshop.command.impl;
 import com.ecobike.eshop.model.Speedelec;
 import com.ecobike.eshop.service.impl.SpeedelecService;
 
-public class AddNewSpeedelecBikeCommand extends AddNewBikeCommand<Speedelec> {
+public class AddNewSpeedelecCommand extends AddNewBikeCommand<Speedelec> {
 
-    public AddNewSpeedelecBikeCommand(SpeedelecService speedelecService) {
+    public AddNewSpeedelecCommand(SpeedelecService speedelecService) {
         super(speedelecService);
     }
 
@@ -13,8 +13,8 @@ public class AddNewSpeedelecBikeCommand extends AddNewBikeCommand<Speedelec> {
     public void execute() {
         Speedelec speedelec = new Speedelec();
         initCommonFields(speedelec);
-        speedelec.setBatteryCapacity(consoleHelper.readInt("battery capacity: "));
         speedelec.setMaximumSpeed(consoleHelper.readInt("maximum speed: "));
+        speedelec.setBatteryCapacity(consoleHelper.readInt("battery capacity: "));
         saveInMemory(speedelec);
         printInfo();
     }

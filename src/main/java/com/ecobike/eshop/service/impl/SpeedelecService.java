@@ -7,7 +7,7 @@ import com.ecobike.eshop.service.BikeService;
 
 public class SpeedelecService extends BikeService<Speedelec> {
 
-    public SpeedelecService() {
-        super(new SpeedelecFileDao(), new SpeedelecInMemoryDao());
+    public SpeedelecService(SpeedelecFileDao speedelecFileDao, SpeedelecInMemoryDao speedelecInMemoryDao) {
+        super(speedelecFileDao, speedelecInMemoryDao);
     }
 }

@@ -1,11 +1,11 @@
 package com.ecobike.eshop;
 
-import com.ecobike.eshop.command.Command;
-import com.ecobike.eshop.stub.command.TestPrintHelloCommand;
+import com.ecobike.eshop.command.ConsoleCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 
 public class CLInterfaceTest {
@@ -20,32 +20,56 @@ public class CLInterfaceTest {
     @Test
     void setCommand() {
         Integer testSlot = 1;
-        Command testCommand = new TestPrintHelloCommand();
+        ConsoleCommand testCommand = mock(ConsoleCommand.class);
+
         cli.setCommand(testSlot, testCommand);
 
         assertEquals(testCommand, cli.getCommands().get(testSlot));
     }
 
     @Test
-    void invokeCommand() {
+    void invokeCommand_existsInCommandMap_invokesCommand() {
         Integer testSlot = 1;
-        cli.setCommand(testSlot, new TestPrintHelloCommand());
+        ConsoleCommand testCommand = mock(ConsoleCommand.class);
+        cli.getCommands().put(testSlot, testCommand);
 
-        assertDoesNotThrow(() -> cli.invokeCommand(testSlot));
+        cli.invokeCommand(testSlot);
+
+        verify(testCommand).execute();
     }
 
     @Test
-    void actionWasTyped() {
-        // TODO: implement this test case;
+    void actionWasTyped_existingSlot_invokesCommand() {
+        Integer slot = 1;
+        ConsoleCommand testCommand = mock(ConsoleCommand.class);
+        cli.getCommands().put(slot, testCommand);
+
+        cli.actionWasTyped(slot);
+
+        verify(testCommand).execute();
+    }
+
+    @Test
+    void actionWasTyped_notExistingSlot_doesNothing() {
+        Integer slot = 1;
+        ConsoleCommand testCommand = mock(ConsoleCommand.class);
+        cli.getCommands().put(slot + 1, testCommand);
+
+        cli.actionWasTyped(slot);
+
+        verify(testCommand, never()).execute();
     }
 
     @Test
     void testToString() {
         Integer testSlot = 1;
-        TestPrintHelloCommand testCommand = new TestPrintHelloCommand();
-        cli.setCommand(testSlot, testCommand);
+        ConsoleCommand testCommand = mock(ConsoleCommand.class);
+        cli.getCommands().put(testSlot, testCommand);
+
+        when(testCommand.toString()).thenReturn("Mock command does nothing useful.");
+
         String expected = String
-                .join(System.lineSeparator(),"Please make your choice:", "1 - " + testCommand.toString());
+                .join(System.lineSeparator(),"Please make your choice:", "1 - Mock command does nothing useful.");
 
         assertEquals(expected, cli.toString());
     }

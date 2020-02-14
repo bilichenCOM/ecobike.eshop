@@ -7,7 +7,7 @@ import com.ecobike.eshop.service.BikeService;
 
 public class FoldingBikeService extends BikeService<FoldingBike> {
 
-    public FoldingBikeService() {
-        super(new FoldingBikeFileDao(), new FoldingBikeInMemoryDao());
+    public FoldingBikeService(FoldingBikeFileDao foldingBikeFileDao, FoldingBikeInMemoryDao foldingBikeInMemoryDao) {
+        super(foldingBikeFileDao, foldingBikeInMemoryDao);
     }
 }

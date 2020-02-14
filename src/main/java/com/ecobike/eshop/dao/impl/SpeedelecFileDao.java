@@ -42,7 +42,7 @@ public class SpeedelecFileDao extends BikeFileDao<Speedelec> implements Speedele
         }
     }
 
-    private static class SpeedelecSerializer implements FileSerializer.Serializer<Speedelec> {
+    public static class SpeedelecSerializer implements FileSerializer.Serializer<Speedelec> {
         @Override
         public String serializeToString(Speedelec speedelec) {
             return "SPEEDELEC " + String.join(DEFAULT_DELIMITER, speedelec.getBrand(),

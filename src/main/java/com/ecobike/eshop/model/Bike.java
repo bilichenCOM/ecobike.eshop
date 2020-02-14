@@ -1,5 +1,7 @@
 package com.ecobike.eshop.model;
 
+import java.util.Objects;
+
 public abstract class Bike {
 
     private String brand;
@@ -46,5 +48,22 @@ public abstract class Bike {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bike bike = (Bike) o;
+        return Objects.equals(brand, bike.brand) &&
+                Objects.equals(weight, bike.weight) &&
+                Objects.equals(lightsAvailable, bike.lightsAvailable) &&
+                Objects.equals(color, bike.color) &&
+                Objects.equals(price, bike.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, weight, lightsAvailable, color, price);
     }
 }
